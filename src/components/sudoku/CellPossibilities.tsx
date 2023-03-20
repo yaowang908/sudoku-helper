@@ -1,8 +1,14 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { borderColor } from '../constants';
-import { useAppSelector } from '@/hooks/reduxHooks';
-import { selectSudokuCell } from '@/store/sudokuSlice';
+import { useAppSelector, useAppDispatch } from '@/hooks/reduxHooks';
+import {
+  selectSudokuCell,
+  setCrossedValue,
+  setSelectedValue,
+  getRowId,
+  getColumnId,
+} from '@/store/sudokuSlice';
 
 interface CellPossibilitiesProps {
   row: number;
@@ -14,38 +20,62 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
 ) => {
   const { row, column } = props;
   const cellState = useAppSelector(selectSudokuCell({ row, column }));
+  const dispatch = useAppDispatch();
 
-  const baseStyle = {
-    display: 'grid',
-    placeItems: 'center',
-    cursor: 'pointer',
-    fontSize: '1.1vw',
-  };
+  const cellStyle = React.useCallback(
+    (representedValue: number) => {
+      const baseStyle: { [key: string]: string } = {
+        display: 'grid',
+        placeItems: 'center',
+        cursor: 'pointer',
+        fontSize: '1.1vw',
+      };
+      if (cellState?.crossedValues?.includes(representedValue)) {
+        baseStyle['textDecoration'] = 'line-through';
+      } else {
+        baseStyle['textDecoration'] = 'none';
+        baseStyle['color'] = borderColor;
+      }
 
-  const cellStyle = (representedValue: number) =>
-    cellState?.crossedValues?.includes(representedValue)
-      ? {
-          ...baseStyle,
-          textDecoration: 'line-through',
-        }
-      : {
-          ...baseStyle,
-          textDecoration: 'none',
-          color: borderColor,
-        };
+      if (cellState?.selectedValue === representedValue) {
+        baseStyle['fontWeight'] = 'bold';
+        baseStyle['color'] = 'orange';
+      }
 
-  const handleClick =
-    ({ row, column }: { row: number; column: number }) =>
+      return baseStyle;
+    },
+    [cellState]
+  );
+
+  const handleClick = React.useCallback(
     (event: React.MouseEvent<HTMLDivElement>) => {
       if (event.type === 'click') {
         //left click
         //set selected value
+        event.preventDefault();
+        dispatch(
+          setSelectedValue({
+            rowId: getRowId(row),
+            columnId: getColumnId(column),
+            selectedValue: Number(event?.currentTarget?.textContent),
+          })
+        );
       }
       if (event.type === 'contextmenu') {
         //right click
         // set crossed value
+        event.preventDefault();
+        dispatch(
+          setCrossedValue({
+            rowId: getRowId(row),
+            columnId: getColumnId(column),
+            crossedValue: Number(event?.currentTarget?.textContent),
+          })
+        );
       }
-    };
+    },
+    [dispatch, row, column]
+  );
 
   return (
     <Box
@@ -62,7 +92,12 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
         .map((_, index) => {
           const representedValue = index + 1;
           return (
-            <Box key={`notes_${index}`} sx={cellStyle(representedValue)}>
+            <Box
+              key={`notes_${index}`}
+              sx={cellStyle(representedValue)}
+              onClick={handleClick}
+              onContextMenu={handleClick}
+            >
               {representedValue}
             </Box>
           );
