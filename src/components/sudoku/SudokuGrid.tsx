@@ -12,8 +12,23 @@ interface GridStructure {
   column: number;
 }
 
-const SudokuGrid = () => {
+const SudokuGrid: React.FC = () => {
   const sudoku = useSelector(selectSudoku);
+
+  const getCells = React.useMemo(() => {
+    const cells: JSX.Element[] = [];
+
+    Object.entries(gridStructures).map(([rowId, value]) => {
+      Object.entries(value).map(([columnId, cell]) => {
+        cells.push(
+          <SudokuCell key={`${cell.group}_${rowId}_${columnId}`} {...cell} />
+        );
+      });
+    });
+
+    return cells;
+  }, []);
+
   return (
     <Box
       sx={{
@@ -25,9 +40,7 @@ const SudokuGrid = () => {
         maxWidth: '50vw',
       }}
     >
-      {sudoku.map((grid, index) => (
-        <SudokuCell key={`${grid.group}_${index}`} {...grid} />
-      ))}
+      {...getCells}
     </Box>
   );
 };

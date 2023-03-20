@@ -1,9 +1,10 @@
 import React from 'react';
 import { Box } from '@mui/material';
 import { borderColor } from '../constants';
+import { useAppSelector } from '@/hooks/reduxHooks';
+import { selectSudokuCell } from '@/store/sudokuSlice';
 
 interface CellPossibilitiesProps {
-  crossedValues?: number[];
   row: number;
   column: number;
 }
@@ -11,7 +12,8 @@ interface CellPossibilitiesProps {
 const CellPossibilities: React.FC<CellPossibilitiesProps> = (
   props: CellPossibilitiesProps
 ) => {
-  const { crossedValues, row, column } = props;
+  const { row, column } = props;
+  const cellState = useAppSelector(selectSudokuCell({ row, column }));
 
   const baseStyle = {
     display: 'grid',
@@ -21,7 +23,7 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
   };
 
   const cellStyle = (representedValue: number) =>
-    crossedValues?.includes(representedValue)
+    cellState?.crossedValues?.includes(representedValue)
       ? {
           ...baseStyle,
           textDecoration: 'line-through',
@@ -31,6 +33,19 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
           textDecoration: 'none',
           color: borderColor,
         };
+
+  const handleClick =
+    ({ row, column }: { row: number; column: number }) =>
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      if (event.type === 'click') {
+        //left click
+        //set selected value
+      }
+      if (event.type === 'contextmenu') {
+        //right click
+        // set crossed value
+      }
+    };
 
   return (
     <Box

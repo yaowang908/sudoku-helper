@@ -49,7 +49,7 @@ const SudokuCell = (props: SudokuCellProps) => {
         borderRight: `${borderColor} ${borderRightThickness}px solid`,
       }}
     >
-      <CellPossibilities crossedValues={notes} row={row} column={column} />
+      <CellPossibilities row={row} column={column} />
       {/* <Box
         sx={{
           position: 'absolute',
