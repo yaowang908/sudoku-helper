@@ -32,6 +32,7 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       };
       if (cellState?.crossedValues?.includes(representedValue)) {
         baseStyle['textDecoration'] = 'line-through';
+        baseStyle['display'] = 'none';
       } else {
         baseStyle['textDecoration'] = 'none';
         baseStyle['color'] = borderColor;

@@ -3,6 +3,11 @@ import { AppState } from './store';
 import { HYDRATE } from 'next-redux-wrapper';
 import { gridStructures } from '@/components/sudoku/gridStructures';
 import { rowsEnum, columnsEnum } from '@/components/constants';
+import {
+  setCrossedValue as internalSetCrossedValue,
+  setSelectedValue as internalSetSelectedValue,
+  setValue as internalSetValue,
+} from './reducers';
 
 export interface SudokuCellState {
   group: number;
@@ -24,82 +29,13 @@ const initialState: SudokuState = {
   data: gridStructures,
 };
 
-const updateSudokuCellState = ({
-  state,
-  rowId,
-  columnId,
-  update,
-}: {
-  state: SudokuState;
-  rowId: rowsEnum;
-  columnId: columnsEnum;
-  update: Partial<SudokuCellState>;
-}) => ({
-  ...state.data,
-  [rowId]: {
-    ...state.data[rowId],
-    [columnId]: {
-      ...state.data[rowId][columnId],
-      ...update,
-    },
-  },
-});
-
 export const sudokuSlice = createSlice({
   name: 'sudoku',
   initialState,
   reducers: {
-    setCrossedValue(
-      state,
-      action: PayloadAction<{
-        rowId: rowsEnum;
-        columnId: columnsEnum;
-        crossedValue: number;
-      }>
-    ) {
-      state.data = updateSudokuCellState({
-        state,
-        rowId: action.payload.rowId,
-        columnId: action.payload.columnId,
-        update: {
-          crossedValues: [
-            ...state.data[action.payload.rowId][action.payload.columnId]
-              .crossedValues,
-            action.payload.crossedValue,
-          ],
-        },
-      });
-    },
-    setSelectedValue(
-      state,
-      action: PayloadAction<{
-        rowId: rowsEnum;
-        columnId: columnsEnum;
-        selectedValue: number;
-      }>
-    ) {
-      state.data = updateSudokuCellState({
-        state,
-        rowId: action.payload.rowId,
-        columnId: action.payload.columnId,
-        update: { selectedValue: action.payload.selectedValue },
-      });
-    },
-    setValue(
-      state,
-      action: PayloadAction<{
-        rowId: rowsEnum;
-        columnId: columnsEnum;
-        value: number;
-      }>
-    ) {
-      state.data = updateSudokuCellState({
-        state,
-        rowId: action.payload.rowId,
-        columnId: action.payload.columnId,
-        update: { value: action.payload.value },
-      });
-    },
+    setCrossedValue: internalSetCrossedValue,
+    setSelectedValue: internalSetSelectedValue,
+    setValue: internalSetValue,
     //TODO: Validate the sudoku grid, probably should be in a separate file
   },
   extraReducers: {
