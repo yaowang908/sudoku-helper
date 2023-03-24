@@ -17,6 +17,8 @@ const validator = (
   //once set selected value, check row and column and group, to make sure selected value is not in the same row, column or group
   let result = { ...data };
 
+  if (selectedValue === prevSelectedValue) return result;
+
   const updateCrossedValues = (
     crossedValues: number[],
     selectedValue: number,

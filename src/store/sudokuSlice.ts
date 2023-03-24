@@ -18,6 +18,8 @@ export interface SudokuCellState {
   value: number | undefined;
 }
 
+// TODO: change crossedValues to to possible values
+
 export type SudoKuDataType = {
   [key in rowsEnum]: { [key in columnsEnum]: SudokuCellState };
 };

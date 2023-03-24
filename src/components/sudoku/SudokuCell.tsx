@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import {
@@ -7,7 +7,15 @@ import {
   thickBorderThickness,
   cellSize,
 } from '@/components/constants';
-import CellPossibilities from '@/components/sudoku/CellPossibilities';
+import CellPopup from '@/components/sudoku/CellPopup';
+import { useAppDispatch } from '@/hooks/reduxHooks';
+import {
+  setSelectedValue,
+  setCrossedValue,
+  getRowId,
+  getColumnId,
+} from '@/store/sudokuSlice';
+import CellPossibilities from './CellPossibilities';
 
 interface SudokuCellProps {
   group: number;
@@ -19,6 +27,38 @@ interface SudokuCellProps {
 
 const SudokuCell = (props: SudokuCellProps) => {
   const { assertion, notes, group, row, column } = props;
+
+  const [showPopup, setShowPopup] = useState(false);
+  const dispatch = useAppDispatch();
+
+  const handleCellClick = () => {
+    console.log('outside click');
+    setShowPopup(true);
+  };
+
+  const handlePopupValueClick = (value: number) => {
+    // Dispatch setSelectedValue action
+    setShowPopup(false);
+    dispatch(
+      setSelectedValue({
+        rowId: getRowId(row),
+        columnId: getColumnId(column),
+        selectedValue: value,
+      })
+    );
+  };
+
+  const handlePopupValueRightClick = (value: number) => {
+    // Dispatch setCrossedValue action
+    setShowPopup(false);
+    dispatch(
+      setCrossedValue({
+        rowId: getRowId(row),
+        columnId: getColumnId(column),
+        crossedValue: value,
+      })
+    );
+  };
 
   const borderTopThicknessRows = [1, 4, 7];
   const borderTopThickness = borderTopThicknessRows.includes(row)
@@ -48,9 +88,10 @@ const SudokuCell = (props: SudokuCellProps) => {
         borderLeft: `${borderColor} ${borderLeftThickness}px solid`,
         borderRight: `${borderColor} ${borderRightThickness}px solid`,
       }}
+      onClick={handleCellClick}
     >
-      <CellPossibilities row={row} column={column} />
-      {/* <Box
+      <Typography
+        variant='h5'
         sx={{
           position: 'absolute',
           top: '50%',
@@ -58,8 +99,18 @@ const SudokuCell = (props: SudokuCellProps) => {
           transform: 'translateX(-50%) translateY(-50%)',
         }}
       >
-        <Typography variant='h5'>{assertion ? assertion : column}</Typography>
-      </Box> */}
+        {assertion ? assertion : ''}
+      </Typography>
+      <CellPossibilities row={row} column={column} />
+      {showPopup && (
+        <CellPopup
+          row={row}
+          column={column}
+          onClose={() => setShowPopup(false)}
+          onValueClick={handlePopupValueClick}
+          onValueRightClick={handlePopupValueRightClick}
+        />
+      )}
     </Box>
   );
 };
