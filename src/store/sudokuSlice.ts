@@ -6,6 +6,7 @@ import { rowsEnum, columnsEnum } from '@/components/constants';
 import {
   setCrossedValue as internalSetCrossedValue,
   setSelectedValue as internalSetSelectedValue,
+  setPossibleValue as internalSetPossibleValue,
   setValue as internalSetValue,
 } from './reducers';
 
@@ -15,6 +16,7 @@ export interface SudokuCellState {
   column: number;
   selectedValue?: number;
   crossedValues: number[];
+  possibleValues: number[];
   value: number | undefined;
 }
 
@@ -37,6 +39,7 @@ export const sudokuSlice = createSlice({
   reducers: {
     setCrossedValue: internalSetCrossedValue,
     setSelectedValue: internalSetSelectedValue,
+    setPossibleValues: internalSetPossibleValue,
     setValue: internalSetValue,
   },
   extraReducers: {
@@ -49,8 +52,12 @@ export const sudokuSlice = createSlice({
   },
 });
 
-export const { setCrossedValue, setSelectedValue, setValue } =
-  sudokuSlice.actions;
+export const {
+  setCrossedValue,
+  setSelectedValue,
+  setPossibleValues,
+  setValue,
+} = sudokuSlice.actions;
 
 export const getRowId = (row: number) => `row_${row}` as rowsEnum;
 export const getColumnId = (column: number) =>

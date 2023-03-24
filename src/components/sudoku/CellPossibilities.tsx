@@ -26,6 +26,8 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
   const isDisplayOnly = !onValueClick && !onValueRightClick;
   const selectedValue = cellState?.selectedValue;
   const displaySelectedValue = isDisplayOnly && selectedValue !== undefined;
+  const possibleValues = cellState?.possibleValues;
+  const crossedValues = cellState?.crossedValues;
 
   const cellStyle = (representedValue: number) => {
     const baseStyle: { [key: string]: string } = {
@@ -37,12 +39,16 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
     if (displaySelectedValue) {
       baseStyle['fontSize'] = '2vw';
     }
-    if (cellState?.crossedValues?.includes(representedValue)) {
+    if (crossedValues?.includes(representedValue)) {
+      baseStyle['display'] = 'none'; // hide crossed values
       baseStyle['textDecoration'] = 'line-through';
       baseStyle['color'] = borderColor;
     } else if (cellState?.selectedValue === representedValue) {
       baseStyle['fontWeight'] = 'bold';
       baseStyle['color'] = 'orange';
+    } else if (possibleValues?.includes(representedValue)) {
+      // This is a possible value
+      baseStyle['color'] = borderColor;
     } else {
       baseStyle['textDecoration'] = 'none';
       baseStyle['color'] = borderColor;

@@ -11,7 +11,7 @@ import CellPopup from '@/components/sudoku/CellPopup';
 import { useAppDispatch } from '@/hooks/reduxHooks';
 import {
   setSelectedValue,
-  setCrossedValue,
+  setPossibleValues,
   getRowId,
   getColumnId,
 } from '@/store/sudokuSlice';
@@ -48,13 +48,13 @@ const SudokuCell = (props: SudokuCellProps) => {
   };
 
   const handlePopupValueRightClick = (value: number) => {
-    // Dispatch setCrossedValue action
+    // Dispatch possible values action
     setShowPopup(false);
     dispatch(
-      setCrossedValue({
+      setPossibleValues({
         rowId: getRowId(row),
         columnId: getColumnId(column),
-        crossedValue: value,
+        possibleValue: value,
       })
     );
   };

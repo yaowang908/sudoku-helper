@@ -46,6 +46,28 @@ const setCrossedValue = (
   });
 };
 
+const setPossibleValue = (
+  state: SudokuState,
+  action: PayloadAction<{
+    rowId: rowsEnum;
+    columnId: columnsEnum;
+    possibleValue: number;
+  }>
+) => {
+  state.data = updateSudokuCellState({
+    state,
+    rowId: action.payload.rowId,
+    columnId: action.payload.columnId,
+    update: {
+      possibleValues: [
+        ...(state.data[action.payload.rowId][action.payload.columnId]
+          .possibleValues || []),
+        action.payload.possibleValue,
+      ],
+    },
+  });
+};
+
 const setSelectedValue = (
   state: SudokuState,
   action: PayloadAction<{
@@ -85,4 +107,4 @@ const setValue = (
   });
 };
 
-export { setCrossedValue, setSelectedValue, setValue };
+export { setCrossedValue, setSelectedValue, setValue, setPossibleValue };

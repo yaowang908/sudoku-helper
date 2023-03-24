@@ -8,6 +8,7 @@ export const gridStructures: SudoKuDataType = {
       row: 1,
       column: 1,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_2]: {
@@ -15,6 +16,7 @@ export const gridStructures: SudoKuDataType = {
       row: 1,
       column: 2,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_3]: {
@@ -22,6 +24,7 @@ export const gridStructures: SudoKuDataType = {
       row: 1,
       column: 3,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_4]: {
@@ -29,6 +32,7 @@ export const gridStructures: SudoKuDataType = {
       row: 1,
       column: 4,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_5]: {
@@ -36,6 +40,7 @@ export const gridStructures: SudoKuDataType = {
       row: 1,
       column: 5,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_6]: {
@@ -43,6 +48,7 @@ export const gridStructures: SudoKuDataType = {
       row: 1,
       column: 6,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_7]: {
@@ -50,6 +56,7 @@ export const gridStructures: SudoKuDataType = {
       row: 1,
       column: 7,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_8]: {
@@ -57,6 +64,7 @@ export const gridStructures: SudoKuDataType = {
       row: 1,
       column: 8,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_9]: {
@@ -64,6 +72,7 @@ export const gridStructures: SudoKuDataType = {
       row: 1,
       column: 9,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
   },
@@ -73,6 +82,7 @@ export const gridStructures: SudoKuDataType = {
       row: 2,
       column: 1,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_2]: {
@@ -80,6 +90,7 @@ export const gridStructures: SudoKuDataType = {
       row: 2,
       column: 2,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_3]: {
@@ -87,6 +98,7 @@ export const gridStructures: SudoKuDataType = {
       row: 2,
       column: 3,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_4]: {
@@ -94,6 +106,7 @@ export const gridStructures: SudoKuDataType = {
       row: 2,
       column: 4,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_5]: {
@@ -101,6 +114,7 @@ export const gridStructures: SudoKuDataType = {
       row: 2,
       column: 5,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_6]: {
@@ -108,6 +122,7 @@ export const gridStructures: SudoKuDataType = {
       row: 2,
       column: 6,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_7]: {
@@ -115,6 +130,7 @@ export const gridStructures: SudoKuDataType = {
       row: 2,
       column: 7,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_8]: {
@@ -122,6 +138,7 @@ export const gridStructures: SudoKuDataType = {
       row: 2,
       column: 8,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_9]: {
@@ -129,6 +146,7 @@ export const gridStructures: SudoKuDataType = {
       row: 2,
       column: 9,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
   },
@@ -138,6 +156,7 @@ export const gridStructures: SudoKuDataType = {
       row: 3,
       column: 1,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_2]: {
@@ -145,6 +164,7 @@ export const gridStructures: SudoKuDataType = {
       row: 3,
       column: 2,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_3]: {
@@ -152,6 +172,7 @@ export const gridStructures: SudoKuDataType = {
       row: 3,
       column: 3,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_4]: {
@@ -159,6 +180,7 @@ export const gridStructures: SudoKuDataType = {
       row: 3,
       column: 4,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_5]: {
@@ -166,6 +188,7 @@ export const gridStructures: SudoKuDataType = {
       row: 3,
       column: 5,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_6]: {
@@ -173,6 +196,7 @@ export const gridStructures: SudoKuDataType = {
       row: 3,
       column: 6,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_7]: {
@@ -180,6 +204,7 @@ export const gridStructures: SudoKuDataType = {
       row: 3,
       column: 7,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_8]: {
@@ -187,6 +212,7 @@ export const gridStructures: SudoKuDataType = {
       row: 3,
       column: 8,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_9]: {
@@ -194,6 +220,7 @@ export const gridStructures: SudoKuDataType = {
       row: 3,
       column: 9,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
   },
@@ -203,6 +230,7 @@ export const gridStructures: SudoKuDataType = {
       row: 4,
       column: 1,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_2]: {
@@ -210,6 +238,7 @@ export const gridStructures: SudoKuDataType = {
       row: 4,
       column: 2,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_3]: {
@@ -217,6 +246,7 @@ export const gridStructures: SudoKuDataType = {
       row: 4,
       column: 3,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_4]: {
@@ -224,6 +254,7 @@ export const gridStructures: SudoKuDataType = {
       row: 4,
       column: 4,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_5]: {
@@ -231,6 +262,7 @@ export const gridStructures: SudoKuDataType = {
       row: 4,
       column: 5,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_6]: {
@@ -238,6 +270,7 @@ export const gridStructures: SudoKuDataType = {
       row: 4,
       column: 6,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_7]: {
@@ -245,6 +278,7 @@ export const gridStructures: SudoKuDataType = {
       row: 4,
       column: 7,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_8]: {
@@ -252,6 +286,7 @@ export const gridStructures: SudoKuDataType = {
       row: 4,
       column: 8,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_9]: {
@@ -259,6 +294,7 @@ export const gridStructures: SudoKuDataType = {
       row: 4,
       column: 9,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
   },
@@ -268,6 +304,7 @@ export const gridStructures: SudoKuDataType = {
       row: 5,
       column: 1,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_2]: {
@@ -275,6 +312,7 @@ export const gridStructures: SudoKuDataType = {
       row: 5,
       column: 2,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_3]: {
@@ -282,6 +320,7 @@ export const gridStructures: SudoKuDataType = {
       row: 5,
       column: 3,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_4]: {
@@ -289,6 +328,7 @@ export const gridStructures: SudoKuDataType = {
       row: 5,
       column: 4,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_5]: {
@@ -296,6 +336,7 @@ export const gridStructures: SudoKuDataType = {
       row: 5,
       column: 5,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_6]: {
@@ -303,6 +344,7 @@ export const gridStructures: SudoKuDataType = {
       row: 5,
       column: 6,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_7]: {
@@ -310,6 +352,7 @@ export const gridStructures: SudoKuDataType = {
       row: 5,
       column: 7,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_8]: {
@@ -317,6 +360,7 @@ export const gridStructures: SudoKuDataType = {
       row: 5,
       column: 8,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_9]: {
@@ -324,6 +368,7 @@ export const gridStructures: SudoKuDataType = {
       row: 5,
       column: 9,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
   },
@@ -333,6 +378,7 @@ export const gridStructures: SudoKuDataType = {
       row: 6,
       column: 1,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_2]: {
@@ -340,6 +386,7 @@ export const gridStructures: SudoKuDataType = {
       row: 6,
       column: 2,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_3]: {
@@ -347,6 +394,7 @@ export const gridStructures: SudoKuDataType = {
       row: 6,
       column: 3,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_4]: {
@@ -354,6 +402,7 @@ export const gridStructures: SudoKuDataType = {
       row: 6,
       column: 4,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_5]: {
@@ -361,6 +410,7 @@ export const gridStructures: SudoKuDataType = {
       row: 6,
       column: 5,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_6]: {
@@ -368,6 +418,7 @@ export const gridStructures: SudoKuDataType = {
       row: 6,
       column: 6,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_7]: {
@@ -375,6 +426,7 @@ export const gridStructures: SudoKuDataType = {
       row: 6,
       column: 7,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_8]: {
@@ -382,6 +434,7 @@ export const gridStructures: SudoKuDataType = {
       row: 6,
       column: 8,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_9]: {
@@ -389,6 +442,7 @@ export const gridStructures: SudoKuDataType = {
       row: 6,
       column: 9,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
   },
@@ -398,6 +452,7 @@ export const gridStructures: SudoKuDataType = {
       row: 7,
       column: 1,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_2]: {
@@ -405,6 +460,7 @@ export const gridStructures: SudoKuDataType = {
       row: 7,
       column: 2,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_3]: {
@@ -412,6 +468,7 @@ export const gridStructures: SudoKuDataType = {
       row: 7,
       column: 3,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_4]: {
@@ -419,6 +476,7 @@ export const gridStructures: SudoKuDataType = {
       row: 7,
       column: 4,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_5]: {
@@ -426,6 +484,7 @@ export const gridStructures: SudoKuDataType = {
       row: 7,
       column: 5,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_6]: {
@@ -433,6 +492,7 @@ export const gridStructures: SudoKuDataType = {
       row: 7,
       column: 6,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_7]: {
@@ -440,6 +500,7 @@ export const gridStructures: SudoKuDataType = {
       row: 7,
       column: 7,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_8]: {
@@ -447,6 +508,7 @@ export const gridStructures: SudoKuDataType = {
       row: 7,
       column: 8,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_9]: {
@@ -454,6 +516,7 @@ export const gridStructures: SudoKuDataType = {
       row: 7,
       column: 9,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
   },
@@ -463,6 +526,7 @@ export const gridStructures: SudoKuDataType = {
       row: 8,
       column: 1,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_2]: {
@@ -470,6 +534,7 @@ export const gridStructures: SudoKuDataType = {
       row: 8,
       column: 2,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_3]: {
@@ -477,6 +542,7 @@ export const gridStructures: SudoKuDataType = {
       row: 8,
       column: 3,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_4]: {
@@ -484,6 +550,7 @@ export const gridStructures: SudoKuDataType = {
       row: 8,
       column: 4,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_5]: {
@@ -491,6 +558,7 @@ export const gridStructures: SudoKuDataType = {
       row: 8,
       column: 5,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_6]: {
@@ -498,6 +566,7 @@ export const gridStructures: SudoKuDataType = {
       row: 8,
       column: 6,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_7]: {
@@ -505,6 +574,7 @@ export const gridStructures: SudoKuDataType = {
       row: 8,
       column: 7,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_8]: {
@@ -512,6 +582,7 @@ export const gridStructures: SudoKuDataType = {
       row: 8,
       column: 8,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_9]: {
@@ -519,6 +590,7 @@ export const gridStructures: SudoKuDataType = {
       row: 8,
       column: 9,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
   },
@@ -528,6 +600,7 @@ export const gridStructures: SudoKuDataType = {
       row: 9,
       column: 1,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_2]: {
@@ -535,6 +608,7 @@ export const gridStructures: SudoKuDataType = {
       row: 9,
       column: 2,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_3]: {
@@ -542,6 +616,7 @@ export const gridStructures: SudoKuDataType = {
       row: 9,
       column: 3,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_4]: {
@@ -549,6 +624,7 @@ export const gridStructures: SudoKuDataType = {
       row: 9,
       column: 4,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_5]: {
@@ -556,6 +632,7 @@ export const gridStructures: SudoKuDataType = {
       row: 9,
       column: 5,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_6]: {
@@ -563,6 +640,7 @@ export const gridStructures: SudoKuDataType = {
       row: 9,
       column: 6,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_7]: {
@@ -570,6 +648,7 @@ export const gridStructures: SudoKuDataType = {
       row: 9,
       column: 7,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_8]: {
@@ -577,6 +656,7 @@ export const gridStructures: SudoKuDataType = {
       row: 9,
       column: 8,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
     [columnsEnum?.column_9]: {
@@ -584,6 +664,7 @@ export const gridStructures: SudoKuDataType = {
       row: 9,
       column: 9,
       crossedValues: [],
+      possibleValues: [],
       value: undefined,
     },
   },
