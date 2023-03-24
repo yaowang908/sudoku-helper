@@ -64,7 +64,8 @@ const setSelectedValue = (
     intermediateState,
     action.payload.rowId,
     action.payload.columnId,
-    action.payload.selectedValue
+    action.payload.selectedValue,
+    state?.data[action.payload.rowId][action.payload.columnId]?.selectedValue
   );
 };
 

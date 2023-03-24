@@ -36,7 +36,6 @@ export const sudokuSlice = createSlice({
     setCrossedValue: internalSetCrossedValue,
     setSelectedValue: internalSetSelectedValue,
     setValue: internalSetValue,
-    //TODO: Validate the sudoku grid, probably should be in a separate file
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
