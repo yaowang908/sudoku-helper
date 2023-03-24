@@ -17,7 +17,9 @@ const CellPopup: React.FC<CellPopupProps> = ({
   onValueClick,
   onValueRightClick,
 }) => {
-  const handleClickOutside = () => {
+  const handleClickOutside = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
     onClose && onClose();
   };
 
@@ -33,6 +35,7 @@ const CellPopup: React.FC<CellPopupProps> = ({
         placeItems: 'center',
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         zIndex: 1000,
+        cursor: 'pointer',
       }}
       onClick={handleClickOutside}
     >

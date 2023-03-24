@@ -32,7 +32,6 @@ const SudokuCell = (props: SudokuCellProps) => {
   const dispatch = useAppDispatch();
 
   const handleCellClick = () => {
-    console.log('outside click');
     setShowPopup(true);
   };
 
@@ -87,6 +86,7 @@ const SudokuCell = (props: SudokuCellProps) => {
         borderBottom: `${borderColor} ${borderBottomThickness}px solid`,
         borderLeft: `${borderColor} ${borderLeftThickness}px solid`,
         borderRight: `${borderColor} ${borderRightThickness}px solid`,
+        cursor: 'pointer',
       }}
       onClick={handleCellClick}
     >
