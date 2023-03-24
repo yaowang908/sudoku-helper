@@ -41,8 +41,8 @@ const CellPopup: React.FC<CellPopupProps> = ({
     >
       <Box
         sx={{
-          width: '25%',
-          height: '25%',
+          width: `min(50vw, 50vh)`,
+          height: `min(50vw, 50vh)`,
           backgroundColor: 'white',
           borderRadius: '5px',
           position: 'relative',

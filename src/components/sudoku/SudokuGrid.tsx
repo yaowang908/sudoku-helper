@@ -32,15 +32,26 @@ const SudokuGrid: React.FC = () => {
   return (
     <Box
       sx={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(9, 1fr)',
-        width: 'auto',
-        height: 'auto',
-        gap: 0,
-        maxWidth: '50vw',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '70vh',
+        width: '100%',
       }}
     >
-      {...getCells}
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(9, 1fr)',
+          width: 'auto',
+          height: 'auto',
+          gap: 0,
+          maxWidth: '100%',
+          maxHeight: '100%',
+        }}
+      >
+        {getCells}
+      </Box>
     </Box>
   );
 };

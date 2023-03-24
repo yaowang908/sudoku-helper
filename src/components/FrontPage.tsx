@@ -5,7 +5,7 @@ import SudokuGrid from '@/components/sudoku/SudokuGrid';
 
 const FrontPage = () => {
   return (
-    <Container>
+    <Container sx={{ overflow: 'hidden' }}>
       <Header />
       <SudokuGrid />
     </Container>

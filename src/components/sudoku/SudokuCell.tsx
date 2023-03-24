@@ -79,8 +79,8 @@ const SudokuCell = (props: SudokuCellProps) => {
   return (
     <Box
       sx={{
-        height: cellSize,
-        width: cellSize,
+        height: `min(${cellSize}vw, ${cellSize}vh)`,
+        width: `min(${cellSize}vw, ${cellSize}vh)`,
         position: 'relative',
         borderTop: `${borderColor} ${borderTopThickness}px solid`,
         borderBottom: `${borderColor} ${borderBottomThickness}px solid`,

@@ -4,6 +4,7 @@ import { borderColor } from '../constants';
 import { useAppSelector } from '@/hooks/reduxHooks';
 import {
   selectSudokuCell,
+  getHideCrossedValues,
   setCrossedValue,
   setSelectedValue,
   getRowId,
@@ -22,6 +23,7 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
 ) => {
   const { row, column, onValueClick, onValueRightClick } = props;
   const cellState = useAppSelector(selectSudokuCell({ row, column }));
+  const hideCrossedValues = useAppSelector(getHideCrossedValues);
 
   const isDisplayOnly = !onValueClick && !onValueRightClick;
   const selectedValue = cellState?.selectedValue;
@@ -34,13 +36,21 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       display: 'grid',
       placeItems: 'center',
       cursor: 'pointer',
-      fontSize: '1.1vw',
+      fontSize: 'min(1.2em, 5vw)',
     };
+    if (!isDisplayOnly) {
+      baseStyle['fontSize'] = 'min(3em, 10vw)';
+    }
     if (displaySelectedValue) {
-      baseStyle['fontSize'] = '2vw';
+      baseStyle['fontSize'] = 'min(2em, 5vw)';
     }
     if (crossedValues?.includes(representedValue)) {
-      baseStyle['display'] = 'none'; // hide crossed values
+      if (!isDisplayOnly) {
+        baseStyle['display'] = 'none'; // hide crossed values
+      }
+      if (hideCrossedValues) {
+        baseStyle['display'] = 'none';
+      }
       baseStyle['textDecoration'] = 'line-through';
       baseStyle['color'] = borderColor;
     } else if (cellState?.selectedValue === representedValue) {
@@ -48,7 +58,7 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       baseStyle['color'] = 'orange';
     } else if (possibleValues?.includes(representedValue)) {
       // This is a possible value
-      baseStyle['color'] = borderColor;
+      baseStyle['color'] = 'lightblue';
     } else {
       baseStyle['textDecoration'] = 'none';
       baseStyle['color'] = borderColor;
