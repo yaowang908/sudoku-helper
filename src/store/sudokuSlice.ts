@@ -23,14 +23,22 @@ export interface SudokuCellState {
 export type SudoKuDataType = {
   [key in rowsEnum]: { [key in columnsEnum]: SudokuCellState };
 };
+
+export enum OperationMode {
+  EDIT = 'EDIT',
+  NOTE = 'NOTE',
+}
 export interface SudokuState {
   data: SudoKuDataType;
   hideCrossedValues: boolean;
+  operationMode: OperationMode;
+  activeCell?: { row: number; column: number };
 }
 
 const initialState: SudokuState = {
   data: gridStructures,
   hideCrossedValues: false,
+  operationMode: OperationMode.EDIT,
 };
 
 export const sudokuSlice = createSlice({
@@ -44,6 +52,16 @@ export const sudokuSlice = createSlice({
       state.hideCrossedValues = action.payload;
     },
     setValue: internalSetValue,
+    setActiveCell: (
+      state,
+      action: PayloadAction<{ row: number; column: number }>
+    ) => {
+      state.activeCell = action.payload;
+    },
+    setOperationMode: (state, action: PayloadAction<OperationMode>) => {
+      state.operationMode = action.payload;
+    },
+    reset: () => initialState,
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
@@ -61,6 +79,9 @@ export const {
   setPossibleValues,
   setHideCrossedValues,
   setValue,
+  setActiveCell,
+  setOperationMode,
+  reset,
 } = sudokuSlice.actions;
 
 export const getRowId = (row: number) => `row_${row}` as rowsEnum;
@@ -73,3 +94,5 @@ export const selectSudokuCell =
   ({ row, column }: { row: number; column: number }) =>
   (state: AppState) =>
     state.sudoku.data?.[getRowId(row)]?.[getColumnId(column)];
+export const getActiveCell = (state: AppState) => state.sudoku.activeCell;
+export const getOperationMode = (state: AppState) => state.sudoku.operationMode;

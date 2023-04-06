@@ -51,6 +51,9 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       if (hideCrossedValues) {
         baseStyle['display'] = 'none';
       }
+      if (possibleValues.length > 0) {
+        baseStyle['display'] = 'none';
+      }
       baseStyle['textDecoration'] = 'line-through';
       baseStyle['color'] = borderColor;
     } else if (cellState?.selectedValue === representedValue) {
@@ -58,7 +61,7 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       baseStyle['color'] = 'orange';
     } else if (possibleValues?.includes(representedValue)) {
       // This is a possible value
-      baseStyle['color'] = 'lightblue';
+      baseStyle['color'] = '#175a9d';
     } else {
       baseStyle['textDecoration'] = 'none';
       baseStyle['color'] = borderColor;

@@ -5,15 +5,17 @@ import {
   borderColor,
   normalBorderThickness,
   thickBorderThickness,
-  cellSize,
+  cellSizeCss,
 } from '@/components/constants';
 import CellPopup from '@/components/sudoku/CellPopup';
-import { useAppDispatch } from '@/hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import {
   setSelectedValue,
   setPossibleValues,
   getRowId,
   getColumnId,
+  setActiveCell,
+  getActiveCell,
 } from '@/store/sudokuSlice';
 import CellPossibilities from './CellPossibilities';
 
@@ -30,34 +32,12 @@ const SudokuCell = (props: SudokuCellProps) => {
 
   const [showPopup, setShowPopup] = useState(false);
   const dispatch = useAppDispatch();
+  const activeCell = useAppSelector(getActiveCell);
 
-  const handleCellClick = () => {
-    setShowPopup(true);
-  };
-
-  const handlePopupValueClick = (value: number) => {
-    // Dispatch setSelectedValue action
-    setShowPopup(false);
-    dispatch(
-      setSelectedValue({
-        rowId: getRowId(row),
-        columnId: getColumnId(column),
-        selectedValue: value,
-      })
-    );
-  };
-
-  const handlePopupValueRightClick = (value: number) => {
-    // Dispatch possible values action
-    setShowPopup(false);
-    dispatch(
-      setPossibleValues({
-        rowId: getRowId(row),
-        columnId: getColumnId(column),
-        possibleValue: value,
-      })
-    );
-  };
+  const handleCellClick = React.useCallback(() => {
+    //* set active cell
+    dispatch(setActiveCell({ row, column }));
+  }, [row, column, dispatch]);
 
   const borderTopThicknessRows = [1, 4, 7];
   const borderTopThickness = borderTopThicknessRows.includes(row)
@@ -79,13 +59,17 @@ const SudokuCell = (props: SudokuCellProps) => {
   return (
     <Box
       sx={{
-        height: `min(${cellSize}vw, ${cellSize}vh)`,
-        width: `min(${cellSize}vw, ${cellSize}vh)`,
+        height: cellSizeCss,
+        width: cellSizeCss,
         position: 'relative',
         borderTop: `${borderColor} ${borderTopThickness}px solid`,
         borderBottom: `${borderColor} ${borderBottomThickness}px solid`,
         borderLeft: `${borderColor} ${borderLeftThickness}px solid`,
         borderRight: `${borderColor} ${borderRightThickness}px solid`,
+        backgroundColor:
+          activeCell?.row === row || activeCell?.column === column
+            ? '#d5f1fa'
+            : 'white',
         cursor: 'pointer',
       }}
       onClick={handleCellClick}
@@ -102,15 +86,6 @@ const SudokuCell = (props: SudokuCellProps) => {
         {assertion ? assertion : ''}
       </Typography>
       <CellPossibilities row={row} column={column} />
-      {showPopup && (
-        <CellPopup
-          row={row}
-          column={column}
-          onClose={() => setShowPopup(false)}
-          onValueClick={handlePopupValueClick}
-          onValueRightClick={handlePopupValueRightClick}
-        />
-      )}
     </Box>
   );
 };

@@ -2,7 +2,12 @@ export const SITE_TITLE = 'Sudoku Helper';
 export const normalBorderThickness = 1;
 export const thickBorderThickness = 3;
 export const borderColor = '#b0b0b0';
-export const cellSize = '9';
+export const cellSize = '7';
+
+export const cellSizeCss = `min(${cellSize}vw, ${cellSize}vh)`;
+export const operationSizeCss = `min(${Number(cellSize) * 3}vw, ${
+  Number(cellSize) * 3
+}vh)`;
 
 export enum rowsEnum {
   row_1 = 'row_1',
