@@ -1,15 +1,8 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { borderColor } from '../constants';
+import { borderColor, textDecorationThickness } from '../constants';
 import { useAppSelector } from '@/hooks/reduxHooks';
-import {
-  selectSudokuCell,
-  getHideCrossedValues,
-  setCrossedValue,
-  setSelectedValue,
-  getRowId,
-  getColumnId,
-} from '@/store/sudokuSlice';
+import { selectSudokuCell, getHideCrossedValues } from '@/store/sudokuSlice';
 
 interface CellPossibilitiesProps {
   row: number;
@@ -51,10 +44,11 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       if (hideCrossedValues) {
         baseStyle['display'] = 'none';
       }
-      if (possibleValues.length > 0) {
+      if (possibleValues && possibleValues.length > 0) {
         baseStyle['display'] = 'none';
       }
       baseStyle['textDecoration'] = 'line-through';
+      baseStyle['textDecorationThickness'] = textDecorationThickness;
       baseStyle['color'] = borderColor;
     } else if (cellState?.selectedValue === representedValue) {
       baseStyle['fontWeight'] = 'bold';

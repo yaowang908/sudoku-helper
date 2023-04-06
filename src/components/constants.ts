@@ -3,6 +3,7 @@ export const normalBorderThickness = 1;
 export const thickBorderThickness = 3;
 export const borderColor = '#b0b0b0';
 export const cellSize = '8';
+export const textDecorationThickness = '2px';
 
 export const cellSizeCss = `min(${cellSize}vw, ${cellSize}vh)`;
 export const operationSizeCss = `min(${Number(cellSize) * 3}vw, ${

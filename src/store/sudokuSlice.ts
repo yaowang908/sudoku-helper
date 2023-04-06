@@ -91,8 +91,10 @@ export const getHideCrossedValues = (state: AppState) =>
   state.sudoku.hideCrossedValues;
 export const selectSudoku = (state: AppState) => state.sudoku.data;
 export const selectSudokuCell =
-  ({ row, column }: { row: number; column: number }) =>
-  (state: AppState) =>
-    state.sudoku.data?.[getRowId(row)]?.[getColumnId(column)];
+  (props: { row: number; column: number } | undefined) => (state: AppState) => {
+    if (!props) return undefined;
+    const { row, column } = props;
+    return state.sudoku.data?.[getRowId(row)]?.[getColumnId(column)];
+  };
 export const getActiveCell = (state: AppState) => state.sudoku.activeCell;
 export const getOperationMode = (state: AppState) => state.sudoku.operationMode;

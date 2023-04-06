@@ -14,6 +14,7 @@ import {
   normalBorderThickness,
   cellSizeCss,
   operationSizeCss,
+  textDecorationThickness,
 } from '@/components/constants';
 import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import {
@@ -26,6 +27,7 @@ import {
   getColumnId,
   setSelectedValue,
   setPossibleValues,
+  selectSudokuCell,
 } from '@/store/sudokuSlice';
 
 const buttonBorderRadius = '0%';
@@ -36,6 +38,8 @@ const Operations = () => {
   const dispatch = useAppDispatch();
   const operationMode = useAppSelector(getOperationMode);
   const activeCell = useAppSelector(getActiveCell);
+  const cellData = useAppSelector(selectSudokuCell(activeCell));
+  const crossedValues = cellData?.crossedValues;
 
   const handleClick =
     (
@@ -171,6 +175,29 @@ const Operations = () => {
           .fill(0)
           .map((_, index) => {
             const representedValue = index + 1;
+            if (crossedValues && crossedValues.includes(representedValue)) {
+              return (
+                <Box
+                  key={`notes_${index}`}
+                  sx={{
+                    display: 'grid',
+                    placeItems: 'center',
+                    height: cellSizeCss,
+                    width: cellSizeCss,
+                    cursor: 'pointer',
+                    borderTop: `${borderColor} ${normalBorderThickness}px solid`,
+                    borderBottom: `${borderColor} ${normalBorderThickness}px solid`,
+                    borderLeft: `${borderColor} ${normalBorderThickness}px solid`,
+                    borderRight: `${borderColor} ${normalBorderThickness}px solid`,
+                    textDecoration: 'line-through',
+                    textDecorationThickness: textDecorationThickness,
+                    color: 'grey',
+                  }}
+                >
+                  {representedValue}
+                </Box>
+              );
+            }
             return (
               <Box
                 key={`notes_${index}`}
