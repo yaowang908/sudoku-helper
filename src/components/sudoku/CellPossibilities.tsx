@@ -29,7 +29,7 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       display: 'grid',
       placeItems: 'center',
       cursor: 'pointer',
-      fontSize: 'min(1.2em, 3vw)',
+      fontSize: 'min(1.2em, 2vw)',
     };
     if (!isDisplayOnly) {
       baseStyle['fontSize'] = 'min(3em, 10vw)';
@@ -52,7 +52,11 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       baseStyle['color'] = borderColor;
     } else if (cellState?.selectedValue === representedValue) {
       baseStyle['fontWeight'] = 'bold';
-      baseStyle['color'] = 'orange';
+      if (cellState?.preInstalled) {
+        baseStyle['color'] = 'lightblue';
+      } else {
+        baseStyle['color'] = 'orange';
+      }
     } else if (possibleValues?.includes(representedValue)) {
       // This is a possible value
       baseStyle['color'] = '#175a9d';

@@ -10,6 +10,13 @@ export const operationSizeCss = `min(${Number(cellSize) * 3}vw, ${
   Number(cellSize) * 3
 }vh)`;
 
+export enum SudoKuLevel {
+  easy = 'easy',
+  medium = 'medium',
+  hard = 'hard',
+  expert = 'expert',
+}
+
 export enum rowsEnum {
   row_1 = 'row_1',
   row_2 = 'row_2',

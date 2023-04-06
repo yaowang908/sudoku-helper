@@ -9,15 +9,16 @@ import {
   setPossibleValue as internalSetPossibleValue,
   setValue as internalSetValue,
 } from './reducers';
+import { default as internalGenerateSudoku } from './generateSudoku';
 
 export interface SudokuCellState {
   group: number;
   row: number;
   column: number;
   selectedValue?: number;
+  preInstalled?: boolean;
   crossedValues: number[];
   possibleValues: number[];
-  value: number | undefined;
 }
 
 export type SudoKuDataType = {
@@ -61,6 +62,7 @@ export const sudokuSlice = createSlice({
     setOperationMode: (state, action: PayloadAction<OperationMode>) => {
       state.operationMode = action.payload;
     },
+    generateSudoku: internalGenerateSudoku,
     reset: () => initialState,
   },
   extraReducers: {
@@ -81,6 +83,7 @@ export const {
   setValue,
   setActiveCell,
   setOperationMode,
+  generateSudoku,
   reset,
 } = sudokuSlice.actions;
 

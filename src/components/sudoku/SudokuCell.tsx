@@ -28,9 +28,8 @@ interface SudokuCellProps {
 }
 
 const SudokuCell = (props: SudokuCellProps) => {
-  const { assertion, notes, group, row, column } = props;
+  const { assertion, row, column } = props;
 
-  const [showPopup, setShowPopup] = useState(false);
   const dispatch = useAppDispatch();
   const activeCell = useAppSelector(getActiveCell);
 

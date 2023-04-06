@@ -175,7 +175,10 @@ const Operations = () => {
           .fill(0)
           .map((_, index) => {
             const representedValue = index + 1;
-            if (crossedValues && crossedValues.includes(representedValue)) {
+            if (
+              (crossedValues && crossedValues.includes(representedValue)) ||
+              cellData?.preInstalled
+            ) {
               return (
                 <Box
                   key={`notes_${index}`}
@@ -192,6 +195,7 @@ const Operations = () => {
                     textDecoration: 'line-through',
                     textDecorationThickness: textDecorationThickness,
                     color: 'grey',
+                    backgroundColor: 'lightgrey',
                   }}
                 >
                   {representedValue}
