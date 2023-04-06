@@ -30,6 +30,7 @@ import {
 
 const buttonBorderRadius = '0%';
 const buttonMargin = '8px';
+const fontSize = 'min(1em, 3vw)';
 
 const Operations = () => {
   const dispatch = useAppDispatch();
@@ -118,6 +119,7 @@ const Operations = () => {
             height: cellSizeCss,
             width: cellSizeCss,
             minWidth: cellSizeCss,
+            fontSize: fontSize,
           }}
           onClick={() => dispatch(setOperationMode(OperationMode.EDIT))}
         >
@@ -133,6 +135,7 @@ const Operations = () => {
             height: cellSizeCss,
             width: cellSizeCss,
             minWidth: cellSizeCss,
+            fontSize: fontSize,
           }}
           onClick={() => dispatch(setOperationMode(OperationMode.NOTE))}
         >
@@ -146,6 +149,7 @@ const Operations = () => {
             height: cellSizeCss,
             width: cellSizeCss,
             minWidth: cellSizeCss,
+            fontSize: fontSize,
           }}
           onClick={handleResetDialogueOpen}
         >

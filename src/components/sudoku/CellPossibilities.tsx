@@ -36,7 +36,7 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       display: 'grid',
       placeItems: 'center',
       cursor: 'pointer',
-      fontSize: 'min(1.2em, 5vw)',
+      fontSize: 'min(1.2em, 3vw)',
     };
     if (!isDisplayOnly) {
       baseStyle['fontSize'] = 'min(3em, 10vw)';
