@@ -11,7 +11,7 @@ const Layout = (props: LayoutProps) => {
 
   return (
     <React.Fragment>
-      <Container maxWidth='md'>
+      <Container>
         <Box sx={{ bgcolor: 'transparent', height: '100vh' }}>{children}</Box>
       </Container>
     </React.Fragment>

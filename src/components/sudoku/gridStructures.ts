@@ -9,7 +9,8 @@ export const gridStructures: SudoKuDataType = {
       column: 1,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_2]: {
       group: 1,
@@ -17,7 +18,8 @@ export const gridStructures: SudoKuDataType = {
       column: 2,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_3]: {
       group: 1,
@@ -25,7 +27,8 @@ export const gridStructures: SudoKuDataType = {
       column: 3,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_4]: {
       group: 2,
@@ -33,7 +36,8 @@ export const gridStructures: SudoKuDataType = {
       column: 4,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_5]: {
       group: 2,
@@ -41,7 +45,8 @@ export const gridStructures: SudoKuDataType = {
       column: 5,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_6]: {
       group: 2,
@@ -49,7 +54,8 @@ export const gridStructures: SudoKuDataType = {
       column: 6,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_7]: {
       group: 3,
@@ -57,7 +63,8 @@ export const gridStructures: SudoKuDataType = {
       column: 7,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_8]: {
       group: 3,
@@ -65,7 +72,8 @@ export const gridStructures: SudoKuDataType = {
       column: 8,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_9]: {
       group: 3,
@@ -73,7 +81,8 @@ export const gridStructures: SudoKuDataType = {
       column: 9,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
   },
   [rowsEnum?.row_2]: {
@@ -83,7 +92,8 @@ export const gridStructures: SudoKuDataType = {
       column: 1,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_2]: {
       group: 1,
@@ -91,7 +101,8 @@ export const gridStructures: SudoKuDataType = {
       column: 2,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_3]: {
       group: 1,
@@ -99,7 +110,8 @@ export const gridStructures: SudoKuDataType = {
       column: 3,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_4]: {
       group: 2,
@@ -107,7 +119,8 @@ export const gridStructures: SudoKuDataType = {
       column: 4,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_5]: {
       group: 2,
@@ -115,7 +128,8 @@ export const gridStructures: SudoKuDataType = {
       column: 5,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_6]: {
       group: 2,
@@ -123,7 +137,8 @@ export const gridStructures: SudoKuDataType = {
       column: 6,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_7]: {
       group: 3,
@@ -131,7 +146,8 @@ export const gridStructures: SudoKuDataType = {
       column: 7,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_8]: {
       group: 3,
@@ -139,7 +155,8 @@ export const gridStructures: SudoKuDataType = {
       column: 8,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_9]: {
       group: 3,
@@ -147,7 +164,8 @@ export const gridStructures: SudoKuDataType = {
       column: 9,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
   },
   [rowsEnum?.row_3]: {
@@ -157,7 +175,8 @@ export const gridStructures: SudoKuDataType = {
       column: 1,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_2]: {
       group: 1,
@@ -165,7 +184,8 @@ export const gridStructures: SudoKuDataType = {
       column: 2,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_3]: {
       group: 1,
@@ -173,7 +193,8 @@ export const gridStructures: SudoKuDataType = {
       column: 3,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_4]: {
       group: 2,
@@ -181,7 +202,8 @@ export const gridStructures: SudoKuDataType = {
       column: 4,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_5]: {
       group: 2,
@@ -189,7 +211,8 @@ export const gridStructures: SudoKuDataType = {
       column: 5,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_6]: {
       group: 2,
@@ -197,7 +220,8 @@ export const gridStructures: SudoKuDataType = {
       column: 6,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_7]: {
       group: 3,
@@ -205,7 +229,8 @@ export const gridStructures: SudoKuDataType = {
       column: 7,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_8]: {
       group: 3,
@@ -213,7 +238,8 @@ export const gridStructures: SudoKuDataType = {
       column: 8,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_9]: {
       group: 3,
@@ -221,7 +247,8 @@ export const gridStructures: SudoKuDataType = {
       column: 9,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
   },
   [rowsEnum?.row_4]: {
@@ -231,7 +258,8 @@ export const gridStructures: SudoKuDataType = {
       column: 1,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_2]: {
       group: 4,
@@ -239,7 +267,8 @@ export const gridStructures: SudoKuDataType = {
       column: 2,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_3]: {
       group: 4,
@@ -247,7 +276,8 @@ export const gridStructures: SudoKuDataType = {
       column: 3,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_4]: {
       group: 5,
@@ -255,7 +285,8 @@ export const gridStructures: SudoKuDataType = {
       column: 4,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_5]: {
       group: 5,
@@ -263,7 +294,8 @@ export const gridStructures: SudoKuDataType = {
       column: 5,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_6]: {
       group: 5,
@@ -271,7 +303,8 @@ export const gridStructures: SudoKuDataType = {
       column: 6,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_7]: {
       group: 6,
@@ -279,7 +312,8 @@ export const gridStructures: SudoKuDataType = {
       column: 7,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_8]: {
       group: 6,
@@ -287,7 +321,8 @@ export const gridStructures: SudoKuDataType = {
       column: 8,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_9]: {
       group: 6,
@@ -295,7 +330,8 @@ export const gridStructures: SudoKuDataType = {
       column: 9,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
   },
   [rowsEnum?.row_5]: {
@@ -305,7 +341,8 @@ export const gridStructures: SudoKuDataType = {
       column: 1,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_2]: {
       group: 4,
@@ -313,7 +350,8 @@ export const gridStructures: SudoKuDataType = {
       column: 2,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_3]: {
       group: 4,
@@ -321,7 +359,8 @@ export const gridStructures: SudoKuDataType = {
       column: 3,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_4]: {
       group: 5,
@@ -329,7 +368,8 @@ export const gridStructures: SudoKuDataType = {
       column: 4,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_5]: {
       group: 5,
@@ -337,7 +377,8 @@ export const gridStructures: SudoKuDataType = {
       column: 5,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_6]: {
       group: 5,
@@ -345,7 +386,8 @@ export const gridStructures: SudoKuDataType = {
       column: 6,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_7]: {
       group: 6,
@@ -353,7 +395,8 @@ export const gridStructures: SudoKuDataType = {
       column: 7,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_8]: {
       group: 6,
@@ -361,7 +404,8 @@ export const gridStructures: SudoKuDataType = {
       column: 8,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_9]: {
       group: 6,
@@ -369,7 +413,8 @@ export const gridStructures: SudoKuDataType = {
       column: 9,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
   },
   [rowsEnum?.row_6]: {
@@ -379,7 +424,8 @@ export const gridStructures: SudoKuDataType = {
       column: 1,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_2]: {
       group: 4,
@@ -387,7 +433,8 @@ export const gridStructures: SudoKuDataType = {
       column: 2,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_3]: {
       group: 4,
@@ -395,7 +442,8 @@ export const gridStructures: SudoKuDataType = {
       column: 3,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_4]: {
       group: 5,
@@ -403,7 +451,8 @@ export const gridStructures: SudoKuDataType = {
       column: 4,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_5]: {
       group: 5,
@@ -411,7 +460,8 @@ export const gridStructures: SudoKuDataType = {
       column: 5,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_6]: {
       group: 5,
@@ -419,7 +469,8 @@ export const gridStructures: SudoKuDataType = {
       column: 6,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_7]: {
       group: 6,
@@ -427,7 +478,8 @@ export const gridStructures: SudoKuDataType = {
       column: 7,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_8]: {
       group: 6,
@@ -435,7 +487,8 @@ export const gridStructures: SudoKuDataType = {
       column: 8,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_9]: {
       group: 6,
@@ -443,7 +496,8 @@ export const gridStructures: SudoKuDataType = {
       column: 9,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
   },
   [rowsEnum?.row_7]: {
@@ -453,7 +507,8 @@ export const gridStructures: SudoKuDataType = {
       column: 1,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_2]: {
       group: 7,
@@ -461,7 +516,8 @@ export const gridStructures: SudoKuDataType = {
       column: 2,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_3]: {
       group: 7,
@@ -469,7 +525,8 @@ export const gridStructures: SudoKuDataType = {
       column: 3,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_4]: {
       group: 8,
@@ -477,7 +534,8 @@ export const gridStructures: SudoKuDataType = {
       column: 4,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_5]: {
       group: 8,
@@ -485,7 +543,8 @@ export const gridStructures: SudoKuDataType = {
       column: 5,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_6]: {
       group: 8,
@@ -493,7 +552,8 @@ export const gridStructures: SudoKuDataType = {
       column: 6,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_7]: {
       group: 9,
@@ -501,7 +561,8 @@ export const gridStructures: SudoKuDataType = {
       column: 7,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_8]: {
       group: 9,
@@ -509,7 +570,8 @@ export const gridStructures: SudoKuDataType = {
       column: 8,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_9]: {
       group: 9,
@@ -517,7 +579,8 @@ export const gridStructures: SudoKuDataType = {
       column: 9,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
   },
   [rowsEnum?.row_8]: {
@@ -527,7 +590,8 @@ export const gridStructures: SudoKuDataType = {
       column: 1,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_2]: {
       group: 7,
@@ -535,7 +599,8 @@ export const gridStructures: SudoKuDataType = {
       column: 2,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_3]: {
       group: 7,
@@ -543,7 +608,8 @@ export const gridStructures: SudoKuDataType = {
       column: 3,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_4]: {
       group: 8,
@@ -551,7 +617,8 @@ export const gridStructures: SudoKuDataType = {
       column: 4,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_5]: {
       group: 8,
@@ -559,7 +626,8 @@ export const gridStructures: SudoKuDataType = {
       column: 5,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_6]: {
       group: 8,
@@ -567,7 +635,8 @@ export const gridStructures: SudoKuDataType = {
       column: 6,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_7]: {
       group: 9,
@@ -575,7 +644,8 @@ export const gridStructures: SudoKuDataType = {
       column: 7,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_8]: {
       group: 9,
@@ -583,7 +653,8 @@ export const gridStructures: SudoKuDataType = {
       column: 8,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_9]: {
       group: 9,
@@ -591,7 +662,8 @@ export const gridStructures: SudoKuDataType = {
       column: 9,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
   },
   [rowsEnum?.row_9]: {
@@ -601,7 +673,8 @@ export const gridStructures: SudoKuDataType = {
       column: 1,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_2]: {
       group: 7,
@@ -609,7 +682,8 @@ export const gridStructures: SudoKuDataType = {
       column: 2,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_3]: {
       group: 7,
@@ -617,7 +691,8 @@ export const gridStructures: SudoKuDataType = {
       column: 3,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_4]: {
       group: 8,
@@ -625,7 +700,8 @@ export const gridStructures: SudoKuDataType = {
       column: 4,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_5]: {
       group: 8,
@@ -633,7 +709,8 @@ export const gridStructures: SudoKuDataType = {
       column: 5,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_6]: {
       group: 8,
@@ -641,7 +718,8 @@ export const gridStructures: SudoKuDataType = {
       column: 6,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_7]: {
       group: 9,
@@ -649,7 +727,8 @@ export const gridStructures: SudoKuDataType = {
       column: 7,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_8]: {
       group: 9,
@@ -657,7 +736,8 @@ export const gridStructures: SudoKuDataType = {
       column: 8,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
     [columnsEnum?.column_9]: {
       group: 9,
@@ -665,7 +745,8 @@ export const gridStructures: SudoKuDataType = {
       column: 9,
       crossedValues: [],
       possibleValues: [],
-      value: undefined,
+      selectedValue: undefined,
+      preInstalled: false,
     },
   },
 };

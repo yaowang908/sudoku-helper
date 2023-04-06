@@ -9,28 +9,37 @@ import {
   setPossibleValue as internalSetPossibleValue,
   setValue as internalSetValue,
 } from './reducers';
+import { default as internalGenerateSudoku } from './generateSudoku';
 
 export interface SudokuCellState {
   group: number;
   row: number;
   column: number;
   selectedValue?: number;
+  preInstalled?: boolean;
   crossedValues: number[];
   possibleValues: number[];
-  value: number | undefined;
 }
 
 export type SudoKuDataType = {
   [key in rowsEnum]: { [key in columnsEnum]: SudokuCellState };
 };
+
+export enum OperationMode {
+  EDIT = 'EDIT',
+  NOTE = 'NOTE',
+}
 export interface SudokuState {
   data: SudoKuDataType;
   hideCrossedValues: boolean;
+  operationMode: OperationMode;
+  activeCell?: { row: number; column: number };
 }
 
 const initialState: SudokuState = {
   data: gridStructures,
   hideCrossedValues: false,
+  operationMode: OperationMode.EDIT,
 };
 
 export const sudokuSlice = createSlice({
@@ -44,6 +53,17 @@ export const sudokuSlice = createSlice({
       state.hideCrossedValues = action.payload;
     },
     setValue: internalSetValue,
+    setActiveCell: (
+      state,
+      action: PayloadAction<{ row: number; column: number }>
+    ) => {
+      state.activeCell = action.payload;
+    },
+    setOperationMode: (state, action: PayloadAction<OperationMode>) => {
+      state.operationMode = action.payload;
+    },
+    generateSudoku: internalGenerateSudoku,
+    reset: () => initialState,
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
@@ -61,6 +81,10 @@ export const {
   setPossibleValues,
   setHideCrossedValues,
   setValue,
+  setActiveCell,
+  setOperationMode,
+  generateSudoku,
+  reset,
 } = sudokuSlice.actions;
 
 export const getRowId = (row: number) => `row_${row}` as rowsEnum;
@@ -70,6 +94,10 @@ export const getHideCrossedValues = (state: AppState) =>
   state.sudoku.hideCrossedValues;
 export const selectSudoku = (state: AppState) => state.sudoku.data;
 export const selectSudokuCell =
-  ({ row, column }: { row: number; column: number }) =>
-  (state: AppState) =>
-    state.sudoku.data?.[getRowId(row)]?.[getColumnId(column)];
+  (props: { row: number; column: number } | undefined) => (state: AppState) => {
+    if (!props) return undefined;
+    const { row, column } = props;
+    return state.sudoku.data?.[getRowId(row)]?.[getColumnId(column)];
+  };
+export const getActiveCell = (state: AppState) => state.sudoku.activeCell;
+export const getOperationMode = (state: AppState) => state.sudoku.operationMode;

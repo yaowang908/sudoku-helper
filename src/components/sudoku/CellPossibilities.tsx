@@ -1,15 +1,8 @@
 import React from 'react';
 import { Box } from '@mui/material';
-import { borderColor } from '../constants';
+import { borderColor, textDecorationThickness } from '../constants';
 import { useAppSelector } from '@/hooks/reduxHooks';
-import {
-  selectSudokuCell,
-  getHideCrossedValues,
-  setCrossedValue,
-  setSelectedValue,
-  getRowId,
-  getColumnId,
-} from '@/store/sudokuSlice';
+import { selectSudokuCell, getHideCrossedValues } from '@/store/sudokuSlice';
 
 interface CellPossibilitiesProps {
   row: number;
@@ -36,7 +29,7 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       display: 'grid',
       placeItems: 'center',
       cursor: 'pointer',
-      fontSize: 'min(1.2em, 5vw)',
+      fontSize: 'min(1.2em, 2vw)',
     };
     if (!isDisplayOnly) {
       baseStyle['fontSize'] = 'min(3em, 10vw)';
@@ -51,14 +44,22 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       if (hideCrossedValues) {
         baseStyle['display'] = 'none';
       }
+      if (possibleValues && possibleValues.length > 0) {
+        baseStyle['display'] = 'none';
+      }
       baseStyle['textDecoration'] = 'line-through';
+      baseStyle['textDecorationThickness'] = textDecorationThickness;
       baseStyle['color'] = borderColor;
     } else if (cellState?.selectedValue === representedValue) {
       baseStyle['fontWeight'] = 'bold';
-      baseStyle['color'] = 'orange';
+      if (cellState?.preInstalled) {
+        baseStyle['color'] = 'lightblue';
+      } else {
+        baseStyle['color'] = 'orange';
+      }
     } else if (possibleValues?.includes(representedValue)) {
       // This is a possible value
-      baseStyle['color'] = 'lightblue';
+      baseStyle['color'] = '#175a9d';
     } else {
       baseStyle['textDecoration'] = 'none';
       baseStyle['color'] = borderColor;

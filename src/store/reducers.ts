@@ -103,7 +103,7 @@ const setValue = (
     state,
     rowId: action.payload.rowId,
     columnId: action.payload.columnId,
-    update: { value: action.payload.value },
+    update: { selectedValue: action.payload.value },
   });
 };
 
