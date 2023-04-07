@@ -10,6 +10,7 @@ import {
   setValue as internalSetValue,
 } from './reducers';
 import { default as internalGenerateSudoku } from './generateSudoku';
+import { validator_possibleValueChanged } from './validator';
 
 export interface SudokuCellState {
   group: number;
@@ -64,6 +65,36 @@ export const sudokuSlice = createSlice({
     },
     generateSudoku: internalGenerateSudoku,
     reset: () => initialState,
+    eraseCell: (
+      state,
+      action: PayloadAction<{ row: number; column: number } | undefined>
+    ) => {
+      if (!action.payload) return;
+      if (
+        state.data[getRowId(action.payload.row)][
+          getColumnId(action.payload.column)
+        ].preInstalled
+      )
+        return;
+
+      const { row, column } = action.payload;
+      const data = { ...state.data };
+      const prevPossibleValues =
+        data[getRowId(row)][getColumnId(column)].possibleValues;
+      // erase these values, the cells in same row and column need to be updated, so that they can have these values as possible values again
+
+      data[getRowId(row)][getColumnId(column)].selectedValue = undefined;
+      data[getRowId(row)][getColumnId(column)].crossedValues = [];
+      data[getRowId(row)][getColumnId(column)].possibleValues = [];
+
+      state.data = validator_possibleValueChanged(
+        data,
+        getRowId(row),
+        getColumnId(column),
+        [],
+        prevPossibleValues
+      );
+    },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
@@ -85,6 +116,7 @@ export const {
   setOperationMode,
   generateSudoku,
   reset,
+  eraseCell,
 } = sudokuSlice.actions;
 
 export const getRowId = (row: number) => `row_${row}` as rowsEnum;

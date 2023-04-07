@@ -1,7 +1,10 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { rowsEnum, columnsEnum } from '@/components/constants';
 import { SudokuState, SudokuCellState } from './sudokuSlice';
-import validator from './validator';
+import {
+  validator_selectedValueChanged,
+  validator_possibleValueChanged,
+} from './validator';
 
 const updateSudokuCellState = ({
   state,
@@ -54,7 +57,7 @@ const setPossibleValue = (
     possibleValue: number;
   }>
 ) => {
-  state.data = updateSudokuCellState({
+  const intermediateState = updateSudokuCellState({
     state,
     rowId: action.payload.rowId,
     columnId: action.payload.columnId,
@@ -66,6 +69,7 @@ const setPossibleValue = (
       ],
     },
   });
+  state.data = intermediateState;
 };
 
 const setSelectedValue = (
@@ -82,7 +86,7 @@ const setSelectedValue = (
     columnId: action.payload.columnId,
     update: { selectedValue: action.payload.selectedValue },
   });
-  state.data = validator(
+  state.data = validator_selectedValueChanged(
     intermediateState,
     action.payload.rowId,
     action.payload.columnId,

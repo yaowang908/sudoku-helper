@@ -20,7 +20,6 @@ import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
 import {
   setOperationMode,
   getOperationMode,
-  reset,
   OperationMode,
   getActiveCell,
   getRowId,
@@ -28,11 +27,12 @@ import {
   setSelectedValue,
   setPossibleValues,
   selectSudokuCell,
+  eraseCell,
 } from '@/store/sudokuSlice';
 
 const buttonBorderRadius = '0%';
 const buttonMargin = '8px';
-const fontSize = 'min(1em, 3vw)';
+const fontSize = 'min(0.8em, 3vw)';
 
 const Operations = () => {
   const dispatch = useAppDispatch();
@@ -48,7 +48,6 @@ const Operations = () => {
       activeCell: { row: number; column: number } | undefined
     ) =>
     (event: React.MouseEvent<HTMLDivElement>) => {
-      console.log(activeCell);
       if (activeCell) {
         if (operationMode === OperationMode.NOTE) {
           dispatch(
@@ -72,22 +71,6 @@ const Operations = () => {
       }
     };
 
-  // * reset confirmation dialog logic
-  const [resetDialogueOpen, setResetDialogueOpen] = React.useState(false);
-
-  const handleResetDialogueOpen = () => {
-    setResetDialogueOpen(true);
-  };
-
-  const handleResetDialogueClose = () => {
-    setResetDialogueOpen(false);
-  };
-
-  const handleResetDialogueConfirm = () => {
-    dispatch(reset());
-    handleResetDialogueClose();
-  };
-
   // * no active cell confirmation dialog logic
   const [noActiveCellDialogueOpen, setNoActiveCellDialogueOpen] =
     React.useState(false);
@@ -101,7 +84,7 @@ const Operations = () => {
   };
 
   return (
-    <Container>
+    <Box>
       <Box
         sx={{
           height: cellSizeCss,
@@ -122,6 +105,9 @@ const Operations = () => {
             borderRadius: buttonBorderRadius,
             height: cellSizeCss,
             width: cellSizeCss,
+            '@media (max-width: 600px)': {
+              width: operationSizeCss,
+            },
             minWidth: cellSizeCss,
             fontSize: fontSize,
           }}
@@ -138,6 +124,9 @@ const Operations = () => {
             borderRadius: buttonBorderRadius,
             height: cellSizeCss,
             width: cellSizeCss,
+            '@media (max-width: 600px)': {
+              width: operationSizeCss,
+            },
             minWidth: cellSizeCss,
             fontSize: fontSize,
           }}
@@ -147,17 +136,20 @@ const Operations = () => {
         </Button>
         <Button
           variant='contained'
-          color='error'
+          color='warning'
           sx={{
             borderRadius: buttonBorderRadius,
             height: cellSizeCss,
             width: cellSizeCss,
+            '@media (max-width: 600px)': {
+              width: operationSizeCss,
+            },
             minWidth: cellSizeCss,
             fontSize: fontSize,
           }}
-          onClick={handleResetDialogueOpen}
+          onClick={() => dispatch(eraseCell(activeCell))}
         >
-          Reset
+          Erase
         </Button>
       </Box>
       <Box
@@ -227,20 +219,6 @@ const Operations = () => {
             );
           })}
       </Box>
-      <Dialog open={resetDialogueOpen} onClose={handleResetDialogueClose}>
-        <DialogTitle>Confirm Action</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Are you sure you want to reset all data? This cannot be undone.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleResetDialogueClose}>Cancel</Button>
-          <Button onClick={handleResetDialogueConfirm} color='error'>
-            Confirm
-          </Button>
-        </DialogActions>
-      </Dialog>
       <Dialog
         open={noActiveCellDialogueOpen}
         onClose={handleNoActiveCellDialogueConfirm}
@@ -257,7 +235,7 @@ const Operations = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </Container>
+    </Box>
   );
 };
 

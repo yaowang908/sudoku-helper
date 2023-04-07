@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '@/components/Header';
-import { Container } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import SudokuGrid from '@/components/sudoku/SudokuGrid';
 import Operations from './Operations/Operations';
 
@@ -8,7 +8,7 @@ const FrontPage = () => {
   return (
     <Container sx={{ overflow: 'hidden', height: '100vh' }}>
       <Header />
-      <Container
+      <Box
         sx={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
@@ -19,7 +19,7 @@ const FrontPage = () => {
       >
         <SudokuGrid />
         <Operations />
-      </Container>
+      </Box>
     </Container>
   );
 };
