@@ -30,12 +30,16 @@ const SudokuGrid: React.FC = () => {
   }, []);
 
   return (
-    <Container
+    <Box
       sx={{
         display: 'flex',
         justifyContent: 'left',
         alignItems: 'flex-start',
         width: '100%',
+        marginRight: '1rem',
+        '@media (max-width: 1000px)': {
+          marginRight: '0',
+        },
       }}
     >
       <Box
@@ -51,7 +55,7 @@ const SudokuGrid: React.FC = () => {
       >
         {getCells}
       </Box>
-    </Container>
+    </Box>
   );
 };
 

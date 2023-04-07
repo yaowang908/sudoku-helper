@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
 import { borderColor, textDecorationThickness } from '../constants';
 import { useAppSelector } from '@/hooks/reduxHooks';
 import { selectSudokuCell, getHideCrossedValues } from '@/store/sudokuSlice';
@@ -17,6 +17,7 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
   const { row, column, onValueClick, onValueRightClick } = props;
   const cellState = useAppSelector(selectSudokuCell({ row, column }));
   const hideCrossedValues = useAppSelector(getHideCrossedValues);
+  const isMobile = useMediaQuery('(max-width: 600px)');
 
   const isDisplayOnly = !onValueClick && !onValueRightClick;
   const selectedValue = cellState?.selectedValue;
@@ -41,6 +42,9 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
       if (!isDisplayOnly) {
         baseStyle['display'] = 'none'; // hide crossed values
       }
+      if (isMobile) {
+        baseStyle['display'] = 'none';
+      }
       if (hideCrossedValues) {
         baseStyle['display'] = 'none';
       }
@@ -53,8 +57,10 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
     } else if (cellState?.selectedValue === representedValue) {
       baseStyle['fontWeight'] = 'bold';
       if (cellState?.preInstalled) {
+        // * show preinstalled value in lightblue
         baseStyle['color'] = 'lightblue';
       } else {
+        // * only show selected value in orange if it is not preinstalled
         baseStyle['color'] = 'orange';
       }
     } else if (possibleValues?.includes(representedValue)) {
@@ -63,7 +69,9 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = (
     } else {
       baseStyle['textDecoration'] = 'none';
       baseStyle['color'] = borderColor;
-      isDisplayOnly ? (baseStyle['display'] = 'none') : '';
+      if (isMobile || isDisplayOnly) {
+        baseStyle['display'] = 'none';
+      }
     }
 
     return baseStyle;

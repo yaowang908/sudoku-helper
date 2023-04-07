@@ -7,7 +7,7 @@ import {
   getColumnId,
 } from './sudokuSlice';
 
-const validator = (
+export const validator_selectedValueChanged = (
   data: SudoKuDataType,
   rowId: rowsEnum,
   columnId: columnsEnum,
@@ -106,4 +106,103 @@ const validator = (
   return result;
 };
 
-export default validator;
+export const validator_possibleValueChanged = (
+  data: SudoKuDataType,
+  rowId: rowsEnum,
+  columnId: columnsEnum,
+  possibleValues: number[],
+  prevSetPossibleValues?: number[]
+): SudoKuDataType => {
+  //once set selected value, check row and column and group, to make sure selected value is not in the same row, column or group
+  let result = { ...data };
+
+  if (possibleValues === prevSetPossibleValues) return result;
+
+  const updateCrossedValues = (
+    crossedValues: number[],
+    possibleValues: number[],
+    prevSetPossibleValues?: number[]
+  ) => {
+    let newCrossedValues = crossedValues.filter(
+      (value) => !possibleValues.includes(value)
+    );
+
+    if (prevSetPossibleValues !== undefined) {
+      newCrossedValues = newCrossedValues.filter(
+        (value) => !prevSetPossibleValues.includes(value)
+      );
+    }
+
+    return Array.from(new Set(newCrossedValues));
+  };
+
+  // * check the same row
+  for (let j = 1; j < 10; j++) {
+    const column = getColumnId(j);
+    if (column === columnId) continue;
+
+    result = {
+      ...result,
+      [rowId]: {
+        ...result[rowId],
+        [column]: {
+          ...result[rowId][column],
+          crossedValues: updateCrossedValues(
+            result[rowId][column].crossedValues,
+            possibleValues,
+            prevSetPossibleValues
+          ),
+        },
+      },
+    };
+  }
+
+  // * check the same column
+  for (let i = 1; i < 10; i++) {
+    const row = getRowId(i);
+    if (row === rowId) continue;
+
+    result = {
+      ...result,
+      [row]: {
+        ...result[row],
+        [columnId]: {
+          ...result[row][columnId],
+          crossedValues: updateCrossedValues(
+            result[row][columnId].crossedValues,
+            possibleValues,
+            prevSetPossibleValues
+          ),
+        },
+      },
+    };
+  }
+
+  // * check the same group
+  const group = result[rowId][columnId].group;
+  for (let i = 1; i < 10; i++) {
+    const row = getRowId(i);
+    for (let j = 1; j < 10; j++) {
+      const column = getColumnId(j);
+      if (column === columnId && row === rowId) continue;
+      if (result[row][column].group === group) {
+        result = {
+          ...result,
+          [row]: {
+            ...result[row],
+            [column]: {
+              ...result[row][column],
+              crossedValues: updateCrossedValues(
+                result[row][column].crossedValues,
+                possibleValues,
+                prevSetPossibleValues
+              ),
+            },
+          },
+        };
+      }
+    }
+  }
+
+  return result;
+};
