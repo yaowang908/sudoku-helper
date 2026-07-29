@@ -1,10 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
 import { rowsEnum, columnsEnum } from '@/components/constants';
 import { SudokuState, SudokuCellState } from './sudokuSlice';
-import {
-  validator_selectedValueChanged,
-  validator_possibleValueChanged,
-} from './validator';
+import recomputeCrossedValues from './recompute';
 
 const updateSudokuCellState = ({
   state,
@@ -57,19 +54,24 @@ const setPossibleValue = (
     possibleValue: number;
   }>
 ) => {
-  const intermediateState = updateSudokuCellState({
+  const { rowId, columnId, possibleValue } = action.payload;
+  const cell = state.data[rowId][columnId];
+
+  // Notes only make sense on empty, non-given cells.
+  if (cell.preInstalled || cell.selectedValue !== undefined) return;
+
+  const existing = cell.possibleValues || [];
+  // Toggle the note on/off.
+  const possibleValues = existing.includes(possibleValue)
+    ? existing.filter((v) => v !== possibleValue)
+    : [...existing, possibleValue].sort((a, b) => a - b);
+
+  state.data = updateSudokuCellState({
     state,
-    rowId: action.payload.rowId,
-    columnId: action.payload.columnId,
-    update: {
-      possibleValues: [
-        ...(state.data[action.payload.rowId][action.payload.columnId]
-          .possibleValues || []),
-        action.payload.possibleValue,
-      ],
-    },
+    rowId,
+    columnId,
+    update: { possibleValues },
   });
-  state.data = intermediateState;
 };
 
 const setSelectedValue = (
@@ -80,19 +82,24 @@ const setSelectedValue = (
     selectedValue: number;
   }>
 ) => {
+  const { rowId, columnId, selectedValue } = action.payload;
+
+  // A pre-installed (given) cell can never be overwritten.
+  if (state.data[rowId][columnId].preInstalled) return;
+
+  const current = state.data[rowId][columnId].selectedValue;
+  // Clicking the same value again toggles it off.
+  const nextValue = current === selectedValue ? undefined : selectedValue;
+
   const intermediateState = updateSudokuCellState({
     state,
-    rowId: action.payload.rowId,
-    columnId: action.payload.columnId,
-    update: { selectedValue: action.payload.selectedValue },
+    rowId,
+    columnId,
+    // Placing a confirmed value clears that cell's pencil-mark notes.
+    update: { selectedValue: nextValue, possibleValues: [] },
   });
-  state.data = validator_selectedValueChanged(
-    intermediateState,
-    action.payload.rowId,
-    action.payload.columnId,
-    action.payload.selectedValue,
-    state?.data[action.payload.rowId][action.payload.columnId]?.selectedValue
-  );
+
+  state.data = recomputeCrossedValues(intermediateState);
 };
 
 const setValue = (

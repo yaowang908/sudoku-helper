@@ -1,60 +1,99 @@
-import { Box, Container } from '@mui/material';
-import Grid from '@mui/material/Grid';
 import React from 'react';
+import { Box } from '@mui/material';
 import SudokuCell from '@/components/sudoku/SudokuCell';
-import { gridStructures } from '@/components/sudoku/gridStructures';
-import { selectSudoku } from '@/store/sudokuSlice';
-import { useSelector } from 'react-redux';
-
-interface GridStructure {
-  group: number;
-  row: number;
-  column: number;
-}
+import {
+  selectSudoku,
+  getActiveCell,
+  getHideCrossedValues,
+  setActiveCell,
+  computeConflicts,
+  getRowId,
+  getColumnId,
+} from '@/store/sudokuSlice';
+import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
+import { useColorMode } from '@/hooks/useColorMode';
+import { getTokens } from '@/theme';
 
 const SudokuGrid: React.FC = () => {
-  const sudoku = useSelector(selectSudoku);
+  const dispatch = useAppDispatch();
+  const data = useAppSelector(selectSudoku);
+  const activeCell = useAppSelector(getActiveCell);
+  const hideCrossedValues = useAppSelector(getHideCrossedValues);
+  const { mode } = useColorMode();
+  const t = getTokens(mode);
 
-  const getCells = React.useMemo(() => {
-    const cells: JSX.Element[] = [];
+  const conflicts = React.useMemo(() => computeConflicts(data), [data]);
 
-    Object.entries(gridStructures).map(([rowId, value]) => {
-      Object.entries(value).map(([columnId, cell]) => {
-        cells.push(
-          <SudokuCell key={`${cell.group}_${rowId}_${columnId}`} {...cell} />
-        );
-      });
-    });
+  const activeInfo = React.useMemo(() => {
+    if (!activeCell) return undefined;
+    const cell = data[getRowId(activeCell.row)][getColumnId(activeCell.column)];
+    return { group: cell.group, value: cell.selectedValue };
+  }, [activeCell, data]);
 
-    return cells;
-  }, []);
+  const handleSelect = React.useCallback(
+    (row: number, column: number) => {
+      dispatch(setActiveCell({ row, column }));
+    },
+    [dispatch]
+  );
+
+  const cells: JSX.Element[] = [];
+  for (let r = 1; r <= 9; r++) {
+    for (let c = 1; c <= 9; c++) {
+      const cell = data[getRowId(r)][getColumnId(c)];
+      const isSelected = activeCell?.row === r && activeCell?.column === c;
+      const isPeer =
+        !!activeCell &&
+        !isSelected &&
+        (activeCell.row === r ||
+          activeCell.column === c ||
+          activeInfo?.group === cell.group);
+      const isSameNumber =
+        !isSelected &&
+        activeInfo?.value !== undefined &&
+        cell.selectedValue === activeInfo.value;
+
+      cells.push(
+        <SudokuCell
+          key={`${r}-${c}`}
+          row={r}
+          column={c}
+          value={cell.selectedValue}
+          given={!!cell.preInstalled}
+          possibleValues={cell.possibleValues}
+          crossedValues={cell.crossedValues}
+          hideCrossedValues={hideCrossedValues}
+          isSelected={isSelected}
+          isPeer={isPeer}
+          isSameNumber={isSameNumber}
+          isConflict={conflicts.has(`${r}-${c}`)}
+          mode={mode}
+          onSelect={handleSelect}
+        />
+      );
+    }
+  }
 
   return (
     <Box
       sx={{
-        display: 'flex',
-        justifyContent: 'left',
-        alignItems: 'flex-start',
         width: '100%',
-        marginRight: '1rem',
-        '@media (max-width: 1000px)': {
-          marginRight: '0',
-        },
+        maxWidth: 'min(92vw, 560px)',
+        aspectRatio: '1 / 1',
+        display: 'grid',
+        gridTemplateColumns: 'repeat(9, 1fr)',
+        gridTemplateRows: 'repeat(9, 1fr)',
+        border: `3px solid ${t.boardLineStrong}`,
+        borderRadius: '14px',
+        overflow: 'hidden',
+        backgroundColor: t.surface,
+        boxShadow:
+          mode === 'light'
+            ? '0 20px 50px -20px rgba(30, 41, 59, 0.35)'
+            : '0 20px 50px -20px rgba(0, 0, 0, 0.6)',
       }}
     >
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(9, 1fr)',
-          width: 'auto',
-          height: 'auto',
-          gap: 0,
-          maxWidth: '100%',
-          maxHeight: '100%',
-        }}
-      >
-        {getCells}
-      </Box>
+      {cells}
     </Box>
   );
 };
