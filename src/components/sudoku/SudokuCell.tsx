@@ -1,92 +1,118 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Box } from '@mui/material';
-import Typography from '@mui/material/Typography';
-import {
-  borderColor,
-  normalBorderThickness,
-  thickBorderThickness,
-  cellSizeCss,
-} from '@/components/constants';
-import CellPopup from '@/components/sudoku/CellPopup';
-import { useAppDispatch, useAppSelector } from '@/hooks/reduxHooks';
-import {
-  setSelectedValue,
-  setPossibleValues,
-  getRowId,
-  getColumnId,
-  setActiveCell,
-  getActiveCell,
-} from '@/store/sudokuSlice';
+import { getTokens, ColorMode } from '@/theme';
 import CellPossibilities from './CellPossibilities';
 
-interface SudokuCellProps {
-  group: number;
+export interface SudokuCellProps {
   row: number;
   column: number;
-  assertion?: number;
-  notes?: number[];
+  value?: number;
+  given: boolean;
+  possibleValues: number[];
+  crossedValues: number[];
+  hideCrossedValues: boolean;
+  isSelected: boolean;
+  isPeer: boolean;
+  isSameNumber: boolean;
+  isConflict: boolean;
+  mode: ColorMode;
+  onSelect: (row: number, column: number) => void;
 }
 
-const SudokuCell = (props: SudokuCellProps) => {
-  const { assertion, row, column } = props;
+const SudokuCell: React.FC<SudokuCellProps> = ({
+  row,
+  column,
+  value,
+  given,
+  possibleValues,
+  crossedValues,
+  hideCrossedValues,
+  isSelected,
+  isPeer,
+  isSameNumber,
+  isConflict,
+  mode,
+  onSelect,
+}) => {
+  const t = getTokens(mode);
 
-  const dispatch = useAppDispatch();
-  const activeCell = useAppSelector(getActiveCell);
+  const background = isConflict
+    ? t.conflictBg
+    : isSelected
+    ? t.selectedBg
+    : isSameNumber
+    ? t.sameNumberBg
+    : isPeer
+    ? t.peerBg
+    : t.surface;
 
-  const handleCellClick = React.useCallback(() => {
-    //* set active cell
-    dispatch(setActiveCell({ row, column }));
-  }, [row, column, dispatch]);
+  const numberColor = isConflict
+    ? t.conflictText
+    : given
+    ? t.givenText
+    : t.userText;
 
-  const borderTopThicknessRows = [1, 4, 7];
-  const borderTopThickness = borderTopThicknessRows.includes(row)
-    ? thickBorderThickness
-    : normalBorderThickness;
-  const borderBottomThicknessRows = [3, 6, 9];
-  const borderBottomThickness = borderBottomThicknessRows.includes(row)
-    ? thickBorderThickness
-    : normalBorderThickness;
-  const borderLeftThicknessColumns = [1, 4, 7];
-  const borderLeftThickness = borderLeftThicknessColumns.includes(column)
-    ? thickBorderThickness
-    : normalBorderThickness;
-  const borderRightThicknessColumns = [3, 6, 9];
-  const borderRightThickness = borderRightThicknessColumns.includes(column)
-    ? thickBorderThickness
-    : normalBorderThickness;
+  // Draw only each cell's right + bottom lines; the board container's 3px
+  // outer border covers the top/left edges. Rows/columns 3 & 6 sit on a 3x3
+  // block boundary and get a thicker, darker separator; the last row/column
+  // draw nothing so they don't double up with the container border.
+  const isBlockRight = column === 3 || column === 6;
+  const isBlockBottom = row === 3 || row === 6;
+  const borderRight =
+    column === 9
+      ? 'none'
+      : `${isBlockRight ? 2 : 1}px solid ${
+          isBlockRight ? t.boardLineStrong : t.boardLine
+        }`;
+  const borderBottom =
+    row === 9
+      ? 'none'
+      : `${isBlockBottom ? 2 : 1}px solid ${
+          isBlockBottom ? t.boardLineStrong : t.boardLine
+        }`;
 
   return (
     <Box
+      onClick={() => onSelect(row, column)}
       sx={{
-        height: cellSizeCss,
-        width: cellSizeCss,
         position: 'relative',
-        borderTop: `${borderColor} ${borderTopThickness}px solid`,
-        borderBottom: `${borderColor} ${borderBottomThickness}px solid`,
-        borderLeft: `${borderColor} ${borderLeftThickness}px solid`,
-        borderRight: `${borderColor} ${borderRightThickness}px solid`,
-        backgroundColor:
-          activeCell?.row === row || activeCell?.column === column
-            ? '#d5f1fa'
-            : 'white',
+        aspectRatio: '1 / 1',
+        display: 'grid',
+        placeItems: 'center',
         cursor: 'pointer',
+        userSelect: 'none',
+        backgroundColor: background,
+        transition: 'background-color 0.12s ease',
+        borderRight,
+        borderBottom,
+        boxShadow: isSelected ? `inset 0 0 0 2px ${t.candidateActive}` : 'none',
+        '&:hover': {
+          backgroundColor: isSelected ? t.selectedBg : t.peerBg,
+        },
       }}
-      onClick={handleCellClick}
     >
-      <Typography
-        variant='h5'
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translateX(-50%) translateY(-50%)',
-        }}
-      >
-        {assertion ? assertion : ''}
-      </Typography>
-      <CellPossibilities row={row} column={column} />
+      {value !== undefined ? (
+        <Box
+          component='span'
+          sx={{
+            fontSize: 'clamp(16px, 4.2vw, 30px)',
+            fontWeight: given ? 700 : 600,
+            color: numberColor,
+            lineHeight: 1,
+          }}
+        >
+          {value}
+        </Box>
+      ) : (
+        <CellPossibilities
+          possibleValues={possibleValues}
+          crossedValues={crossedValues}
+          hideCrossedValues={hideCrossedValues}
+          mode={mode}
+        />
+      )}
     </Box>
   );
 };
 
-export default SudokuCell;
+export default React.memo(SudokuCell);

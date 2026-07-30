@@ -1,7 +1,3 @@
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
 import Head from 'next/head';
 import { default as FrontPage } from '@/components/FrontPage';
 import Layout from '@/components/Layout';
@@ -10,8 +6,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Sudoku helper</title>
-        <meta name='description' content='Help you to solve sudoku' />
+        <title>Sudoku Helper — solve smarter</title>
+        <meta
+          name='description'
+          content='A modern Sudoku helper that tracks candidate numbers for every cell so you can focus on solving.'
+        />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>

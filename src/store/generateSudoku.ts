@@ -42,6 +42,9 @@ const generateSudoku = (
   const data = convertStringToGridData(sudoku.puzzle);
 
   state.data = wholeStateValidator(data) || gridStructures;
+  state.difficulty = action.payload.level;
+  state.activeCell = undefined;
+  state.puzzleId = (state.puzzleId ?? 0) + 1;
 };
 
 export default generateSudoku;
