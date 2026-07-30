@@ -68,7 +68,7 @@ const CellPossibilities: React.FC<CellPossibilitiesProps> = ({
               placeItems: 'center',
               width: '100%',
               height: '100%',
-              fontSize: 'clamp(7px, 1.4vw, 12px)',
+              fontSize: 'clamp(9px, 1.8vw, 15px)',
               lineHeight: 1,
               fontWeight: weight,
               color,

@@ -78,7 +78,7 @@ const SudokuGrid: React.FC = () => {
     <Box
       sx={{
         width: '100%',
-        maxWidth: 'min(92vw, 560px)',
+        maxWidth: 'min(100%, 600px)',
         aspectRatio: '1 / 1',
         display: 'grid',
         gridTemplateColumns: 'repeat(9, 1fr)',
