@@ -1,5 +1,8 @@
 # Sudoku Helper
 
+<img width="1061" height="730" alt="CleanShot 2026-07-29 at 23 13 00" src="https://github.com/user-attachments/assets/b734259e-72f5-423a-b42b-23e35cea0268" />
+
+
 A modern Sudoku app that does the tedious part for you: as you place numbers,
 it automatically tracks the remaining **candidate** values for every empty cell,
 so you can focus on the actual solving.
